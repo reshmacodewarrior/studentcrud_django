@@ -1,0 +1,41 @@
+{% extends 'student/index.html' %}
+
+{% block title %}{{ student.first_name }} {{ student.last_name }}{% endblock %}
+
+{% block content %}
+<div class="card">
+    <div class="card-header">
+        <h2>Student Details</h2>
+    </div>
+    <div class="card-body">
+        <dl class="row">
+            <dt class="col-sm-3">Full Name</dt>
+            <dd class="col-sm-9">{{ student.first_name }} {{ student.last_name }}</dd>
+
+            <dt class="col-sm-3">Email</dt>
+            <dd class="col-sm-9">{{ student.email }}</dd>
+
+            <dt class="col-sm-3">Date of Birth</dt>
+            <dd class="col-sm-9">{{ student.date_of_birth }}</dd>
+
+            <dt class="col-sm-3">Gender</dt>
+            <dd class="col-sm-9">{{ student.get_gender_display }}</dd>
+
+            <dt class="col-sm-3">Address</dt>
+            <dd class="col-sm-9">{{ student.address }}</dd>
+
+            <dt class="col-sm-3">Phone</dt>
+            <dd class="col-sm-9">{{ student.phone }}</dd>
+
+            <dt class="col-sm-3">Admission Date</dt>
+            <dd class="col-sm-9">{{ student.admission_date }}</dd>
+        </dl>
+
+        <div class="mt-4">
+            <a href="{% url 'student_update' student.pk %}" class="btn btn-warning">Edit</a>
+            <a href="{% url 'student_delete' student.pk %}" class="btn btn-danger">Delete</a>
+            <a href="{% url 'student_list' %}" class="btn btn-secondary">Back to List</a>
+        </div>
+    </div>
+</div>
+{% endblock %}
